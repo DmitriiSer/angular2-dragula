@@ -1,0 +1,39 @@
+h1 {
+    text-align: center;
+}
+
+.container > .row > .col > div {
+    position: relative;
+    margin: 10px auto;
+    padding: 5px;
+    background: rgba(0, 0, 0, 0.05);
+    border: 1px dotted rgba(0, 0, 0, 0.25);
+    text-align: justify;
+    cursor: default;
+    
+}
+
+.container > .row > .col > div > i {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    width: 32px;
+    height: 32px;
+    line-height: 32px;
+    margin: auto 5px;
+    text-align: center;
+    background: rgba(0, 0, 0, 0.15);
+    border-radius: 50%;
+    cursor: move;
+    transition: 0.4s all ease;
+}
+
+.container > .row > .col > div > i:hover {
+    background: rgba(0, 0, 0, 0.65);
+    color: white;
+}
+
+.no-bullet {
+    list-style-type: none;
+}
