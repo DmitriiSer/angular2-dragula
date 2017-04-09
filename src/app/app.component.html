@@ -1,3 +1,35 @@
 <h1>
   {{title}}
 </h1>
+
+<div class="container">
+  <div class="row">
+    <div class="col s6" [dragula]="'container'" [dragulaModel]='container1Elements'>
+      <div *ngFor="let elem of container1Elements"
+        [style.padding-right]="elem.dragHandler ? '42px' : null">
+        <span [innerHtml]="elem.title"></span>
+        <i *ngIf="elem.dragHandler" class="fa fa-ellipsis-v fa-lg waves-effect waves-light" aria-hidden="true"></i>
+      </div>
+    </div>
+    <div class="col s6" [dragula]="'container'" [dragulaModel]='container2Elements'>
+      <div *ngFor="let elem of container2Elements"
+        [style.padding-right]="elem.dragHandler ? '42px' : null">
+        <span [innerHtml]="elem.title"></span>
+        <i *ngIf="elem.dragHandler" class="fa fa-ellipsis-v fa-lg waves-effect waves-light" aria-hidden="true"></i>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+  <div class="row">
+    <div class="col offset-s2 s8">
+      <ul class="collapsible" data-collapsible="accordion" [dragula]="'tree-node'">
+        <li class="no-bullet" *ngFor="let elem of collapsibleElements">
+          <a class="collapsible-header waves-effect">{{ elem.title }}</a>
+          <div class="collapsible-body">Body of the <b>{{ elem.title }}</b></div>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
