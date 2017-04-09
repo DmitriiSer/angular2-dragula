@@ -39,7 +39,9 @@ export class AppComponent {
   collapsibleElements = [
     { title: 'First' },
     { title: 'Second' },
-    { title: 'Third' }
+    { title: 'Third' },
+    { title: 'Fourth' },
+    { title: 'Fifth' }
   ];
 
   constructor(dragulaService: DragulaService) {
