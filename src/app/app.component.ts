@@ -8,7 +8,10 @@ import { DragulaService } from 'ng2-dragula';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'Angular2-dragula';
+  title: string = 'Angular2-dragula';
+  checkbox1State: boolean = true;
+  checkbox2State: boolean = false;
+  dragulaContainerName: string = 'container';
 
   container1Elements: Array<any> = [
     {
@@ -44,12 +47,19 @@ export class AppComponent {
     { title: 'Fifth' }
   ];
 
-  constructor(dragulaService: DragulaService) {
+  constructor(private dragulaService: DragulaService) {
     dragulaService.setOptions('container', {
-      removeOnSpill: true,
+      removeOnSpill: false,
       moves: function (el, container, handle) {
-        return handle.classList.contains('fa');
-      }
+        // elements can be dragged only in a container with the class 'allowDragAndDrop'
+        // and dragging it by the handle with the class 'fa'
+        return container.classList.contains('allowDragAndDrop') && handle.classList.contains('fa');
+      },
+      accepts: function (el, target, source, sibling) {
+        // elements can be dropped only in a container with the class 'allowDragAndDrop'
+        return target.classList.contains('allowDragAndDrop');
+      },
     });
   }
+
 }
