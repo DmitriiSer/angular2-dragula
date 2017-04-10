@@ -3,21 +3,63 @@
 </h1>
 
 <div class="container">
+  <div class="row" style="margin-bottom: 0">
+    <div class="col s6">
+      <p style="text-align: center">
+        <input
+          type="checkbox"
+          id="checkbox1"
+          [checked]="checkbox1State"
+          (change)="checkbox1State = !checkbox1State" />
+        <label for="checkbox1">Allow drag and drop</label>
+      </p>
+    </div>
+    <div class="col s6">
+      <p style="text-align: center">
+        <input
+          type="checkbox"
+          id="checkbox2"
+          [checked]="checkbox2State"
+          (change)="checkbox2State = !checkbox2State" />
+        <label for="checkbox2">Allow drag and drop</label>
+      </p>
+    </div>
+  </div>
   <div class="row">
-    <div class="col s6" [dragula]="'container'" [dragulaModel]='container1Elements'>
-      <div class="draggable" *ngFor="let elem of container1Elements"
-        [style.padding-right]="elem.dragHandler ? '42px' : null">
+    <div class="col s6"
+      [ngClass]="{ allowDragAndDrop: checkbox1State }"
+      [dragula]="dragulaContainerName"
+      [dragulaModel]='container1Elements'>
+      
+      <div
+        *ngFor="let elem of container1Elements"
+        class="draggable"
+        [style.padding-right]="checkbox1State && elem.dragHandler ? '42px' : null">
         <span [innerHtml]="elem.title"></span>
-        <i *ngIf="elem.dragHandler" class="fa fa-ellipsis-v fa-lg waves-effect waves-light" aria-hidden="true"></i>
+        <i
+          *ngIf="checkbox1State && elem.dragHandler"
+          class="fa fa-ellipsis-v fa-lg waves-effect waves-light"
+          aria-hidden="true"></i>
       </div>
     </div>
-    <div class="col s6" [dragula]="'container'" [dragulaModel]='container2Elements'>
-      <div class="draggable" *ngFor="let elem of container2Elements"
-        [style.padding-right]="elem.dragHandler ? '42px' : null">
+
+    <div
+      class="col s6"
+      [ngClass]="{ allowDragAndDrop: checkbox2State }"
+      [dragula]="dragulaContainerName"
+      [dragulaModel]='container2Elements'>
+      <div
+        *ngFor="let elem of container2Elements"
+        class="draggable"
+        [style.padding-right]="checkbox2State && elem.dragHandler ? '42px' : null">
         <span [innerHtml]="elem.title"></span>
-        <i *ngIf="elem.dragHandler" class="fa fa-ellipsis-v fa-lg waves-effect waves-light" aria-hidden="true"></i>
+        <i
+          *ngIf="checkbox2State && elem.dragHandler"
+          class="fa fa-ellipsis-v fa-lg waves-effect waves-light"
+          aria-hidden="true"></i>
       </div>
     </div>
+
   </div>
 </div>
 
